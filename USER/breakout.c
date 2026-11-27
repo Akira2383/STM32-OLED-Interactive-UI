@@ -16,9 +16,10 @@
 #define PADDLE_WIDTH    16
 #define PADDLE_HEIGHT   4
 #define PADDLE_Y        58
+#define PADDLE_STEP     12
 #define BALL_SIZE       3
 #define FRAME_INTERVAL  20
-#define MAX_ANGLE       2.0f
+#define MAX_ANGLE       0.9f
 
 typedef struct {
     float x, y;
@@ -116,8 +117,8 @@ static void Breakout_Init(void)
     paddle.x = 56;
     ball.x = 62.0f;
     ball.y = 48.0f;
-    ball.vx = 1.1f;
-    ball.vy = -1.4f;
+    ball.vx = 0.55f;
+    ball.vy = -0.7f;
     game_state = STATE_PLAYING;
 }
 
@@ -227,8 +228,7 @@ void Breakout_Run(void)
     while (1)
     {
         IWDG_Feed();
-        Key_Scan(&key_left);
-        Key_Scan(&key_right);
+        Key_Scan(&key_next);
         Key_Scan(&key_enter);
 
         if (game_state != STATE_PLAYING)
@@ -237,17 +237,17 @@ void Breakout_Run(void)
         }
         else
         {
-            if (Key_GetEvent(&key_left) == KEY_EVENT_DOWN)
+            if (Key_GetEvent(&key_next) == KEY_EVENT_DOWN)
             {
-                if (paddle.x >= 2) paddle.x -= 2;
+                if (paddle.x >= PADDLE_STEP) paddle.x -= PADDLE_STEP;
                 else paddle.x = 0;
             }
-            if (Key_GetEvent(&key_right) == KEY_EVENT_DOWN)
+            if (Key_GetEvent(&key_enter) == KEY_EVENT_DOWN)
             {
-                if (paddle.x <= 110) paddle.x += 2;
+                if (paddle.x <= 128 - PADDLE_WIDTH - PADDLE_STEP)
+                    paddle.x += PADDLE_STEP;
                 else paddle.x = 112;
             }
-            Key_GetEvent(&key_enter);
 
             now = Timer_GetMs();
             if (now - last_frame >= FRAME_INTERVAL)

@@ -29,7 +29,7 @@ The STM32 is connected to the OLED using flying wires (no breadboard for better 
 *   **GND**: GND
 *   **SCL**: PB6 (Software I2C)
 *   **SDA**: PB7 (Software I2C)
-*   **Keys**: PA1 (Next/Down), PA2 (Enter), PA3 (Up), PA5 (Left), PA6 (Right) — internal pull-up, active low
+*   **Keys**: PA1 (Next/Down; Breakout left), PA2 (Enter; Breakout right), PA3 (Up), PA5 (Left), PA6 (Right) — internal pull-up, active low
 *   **Analog Input**: PA0 (ADC1 Channel 0, 0–3.3V)
 
 Note: PA2 is defined as `OLED_RES` in `oled.h`, but that initialization is commented out and the pin is actually used as the Enter key.
