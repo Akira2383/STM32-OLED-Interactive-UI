@@ -735,6 +735,16 @@
               <FilePath>.\snake.c</FilePath>
             </File>
             <File>
+              <FileName>breakout.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\breakout.h</FilePath>
+            </File>
+            <File>
+              <FileName>breakout.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\breakout.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_iwdg.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\bsp_iwdg.h</FilePath>

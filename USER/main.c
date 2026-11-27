@@ -7,6 +7,7 @@
 				#include "key.h"
 				#include "timer.h"
 				#include "snake.h"
+				#include "breakout.h"
 				#include "spectrum.h"
 				#include "bsp_iwdg.h"
 
@@ -91,6 +92,13 @@
 									else if (menu_cursor == MENU_TERMINAL)
 									{
 										Snake_Run();
+										current_state = STATE_MENU;
+										OLED_Clear();
+										UI_Draw_Menu(menu_cursor);
+									}
+									else if (menu_cursor == MENU_SQUADS)
+									{
+										Breakout_Run();
 										current_state = STATE_MENU;
 										OLED_Clear();
 										UI_Draw_Menu(menu_cursor);
